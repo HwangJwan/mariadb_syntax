@@ -54,10 +54,10 @@ alter table posts rename post;
 alter table post add column age int;
 
 -- 테이블의 컬럼 삭제
-alter table drop column age;
+alter table post drop column age;
 
 -- 테이블의 컬럼명 변경
-alter table change column contents content varchar(255);
+alter table post change column contents content varchar(255);
 
 -- 테이블 컬럼의 타입과 제약조건 변경
 alter table post modify column content varchar(3000);

@@ -22,7 +22,7 @@ select * from author where id>2and name='홍길동';
 select * from author where id in (1,3,5);
 
 -- 이름이 '홍길동'인 글쓴이가 쓴 글 목록을 조회하시오
-select * from post where id in(select id from author where name='홍길동');
+select * from post where author_id in(select id from author where name='홍길동');
 
 -- 중복제거 조회 : distinct
 select distinct name from author;
@@ -50,3 +50,5 @@ select * from author where password is null;
 select * from author where password is not null;
 
 -- 프로그래머스 sql 문제풀이
+-- 여러 기준으로 정렬하기
+-- 상위 N개 레코드  
