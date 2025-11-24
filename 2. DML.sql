@@ -36,7 +36,7 @@ select * from author order by name desc;
 select * from author order by name desc, email asc;
 
 -- 결과값 개수 제한
--- 가장 최근에 가입한 회원 1명만 조호할 경우
+-- 가장 최근에 가입한 회원 1명만 조호할 경  우
 select * from author order by id desc limit 1;
 
 -- alias(별칭)을 이용한 select

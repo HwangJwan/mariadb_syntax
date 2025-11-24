@@ -11,7 +11,7 @@ alter table author modify column id bigint;
 alter table post modify column id bigint;
 alter table post modify column aouthor_id bigint;
 
--- decimal(총자리수, 소수부자리수)
+-- decimal(총자리수, 소수부자리수, 고정소수점) 부동소수점 오차 발생 - float, double
 alter table author add column height decimal(4, 1);
 
 -- 정상적으로 insert
@@ -30,7 +30,7 @@ alter table author add column profile_image longblob;
 insert into author(id,name,email,profile_image) values(9, 'abc', 'abc.naver.com', LOAD_FILE('C:\\sadasd.jpg'));
 
 -- enum : 삽입될 수 있는 데이터의 종류를 한정하는 데이터 타입
--- role 컬럼ㅁ 추가
+-- role 컬럼 추가
 alter table author add column role enum('admin', 'user') not null default 'user';
 -- enum에서 지정된 role을 insert
 insert into author(id, name, email, role) values(11, 'ddd', 'ddd@naver.com', 'admin');
@@ -51,7 +51,7 @@ insert into post(id, title, contents, author_id) values(5, 'hello','hello...', 1
 
 -- 비교연산자
 select * from author where id>=2 and id<=4;    ----------|
-select * from author where id in (2,3,4);                |--같다
+select * from author where id in (2,3  ,4);                |--같다
 select * from author where id between 2 and 4; ----------|
                                      포함   포함   => 2, 3, 4
 
@@ -81,7 +81,7 @@ select * from post where cast(date_format(created_time, '%m') as unsigned)=1;
 
 -- 실습 : 2025-11월 등록된 게시글 조회
 select * from post where date_format(created_time, '%Y-%m')='2025-11';
-select * from post where created_time like '2025--11%';
+select * from post where created_time like '2025-11%';
 
 -- 실습 : 2025년 11월 1일부터 11월 19일까지의 데이터 조회 
 select * from post where created_time >= '2025-11-01' and created_time < '2025-11-20';
