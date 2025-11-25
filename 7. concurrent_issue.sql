@@ -15,7 +15,7 @@ commit;
 -- 2) 터미널을 열어 아래 코드 실행
 insert into author(email) values('ggg@naver.com');
 
--- repeatable read : 읽기의 일관성 보장 -> Lost update문제 발생 - 배타lock(배타적 잠금)
+-- repeatable read : 읽기의 일관성 보장 -> Lost update문제 발생 - 배타lock(배타적 잠금) - 특정 row에만 lock을 갈음
 -- lost update 문제가 발생하는 상황
 DELIMITER //
 create procedure concurrent_test1()

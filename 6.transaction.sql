@@ -25,4 +25,4 @@ begin
 end //
 DELIMITER ;
 -- 프로시저 호출
-call.transaction_test;
+call.transaction_test();
