@@ -42,7 +42,7 @@ select name, email from aurhor union select title, contents from post;
 -- union은 기본적으로 distinct 적용 (중복 허용하려면 union all 사용)
 select name, email from aurhor union all select title, contents from post;
 
--- 서브쿼리 : select문 안에 또다른 select문을 서브쿼리라고함  (join보다 서브쿼리가 성능 떨어짐)
+-- 서브쿼리 : select문 안에 또다른 select문을 서브쿼리라고함  (join보다 서브쿼리가 성능 떨어짐, 아주 복잡한 쿼리는 대체 불가능)
 -- where절 안에 서브쿼리
 -- 한번이라도 글을 쓴 author의 목록 조회(중복제거)
 select a.* from author a inner join post p;
@@ -87,4 +87,11 @@ select author_id from post group by author_id having count(*)>=2;
 -- 동명 동물 수 찾기 -> having
 -- 카테고리 별 도서 판매량 집계하기 ->  join까지
 -- 조건에 맞는 사용자와 총 거래금액 조회하기 -> join까지
+
+-- 다중열 group by
+-- group by 첫번째 컬럼, 두번째 컬럼 : 첫번째 컬럼으로 grouping이후에 두번째 컬럼으로 grouping
+-- post테이블에서 작성자별로 구분하여 같은 제목의 글의 개수를 출력하시오.
+select author_id, title, count(title) as count from post group by author_id, title;
+
+-- 재구매가 일어난 상품과 회원 리스트 구하기
 
