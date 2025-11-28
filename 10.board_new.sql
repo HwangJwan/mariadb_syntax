@@ -22,8 +22,12 @@ insert into address(country, city, street, author_id) values('US', 'new york', '
 
 -- 글쓰기
 insert into post(title, contents) values( 'hello2', 'hello world2..');
-insert into author_post_list(author_id, post_id) value(1,2);
+insert into author_post_list(author_id, post_id) value(1,2);      
+insert into author_post_list(author_id, post_id) value(1,(select id from post where author_id=1 order bt author_id desc limit 1));                                                                                   
 insert into author_post_list(author_id, post_id) value(2,2);
+-- 추후 참여자
+-- update ...
+-- insert into author_post_list values(1.2);
 
 -- 글 전체목록 조회하기 : 제목, 내용, 글쓴이 이름이 조회가 되도록 select 쿼리 생성 
-select distinct p.title,distinct p.contents,distinct a.name from post p inner join author_post_list a_p_l inner join author a;
+select  p.title, p.contents, a.name from post p inner join author_post_list a_p_l on p.id=a_p_l.author_id inner join author a on a.id=a_p_l.author_id;
